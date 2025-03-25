@@ -118,6 +118,7 @@ of gene expression data, such as TSNE, UMAP and violin plots.
 
 You can make use of the computer environment provided for the course, which is ready for use and have the necessary data & software installed.
 However, if you want to run the analysis on your own computer, you can follow these instructions.
+### R and Bioconductor packages
 
 * Download and install R: https://cloud.r-project.org/
   * (Windows users only): Download and install RTools: https://cran.r-project.org/bin/windows/Rtools/
@@ -125,11 +126,46 @@ However, if you want to run the analysis on your own computer, you can follow th
 * Open RStudio and run the following commands from the console:
     ```r
     install.packages("BiocManager")
-    BiocManager::install(c("AnnotationHub", "BiocParallel", "BiocSingular", "DropletUtils", "PCAtools", "batchelor", "bluster", "cluster", "clustree", "dynamicTreeCut", "edgeR", "ensembldb", "ggplot2", "igraph", "patchwork", "pheatmap", "scater", "scran", "tidyverse"))
+    BiocManager::install(c("AnnotationHub", "BiocParallel", "BiocSingular", 
+                           "DropletUtils", "PCAtools", "batchelor", 
+                           "bluster", "cluster", "clustree", "dynamicTreeCut", 
+                           "edgeR", "ensembldb", "ggplot2", "igraph", 
+                           "patchwork", "pheatmap", "scater", "scran", "tidyverse"))
     ```
 
+### Cellranger
+
 For Cellranger, you will need to use a Linux machine.
-See the [installation instructions from 10x Genomics](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/installation).
+The instructions below are based on the [installation instructions from 10x Genomics](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/installation).
+
+1. Create a directory for your software. In this example, we will use `$HOME/software`:
+
+    ```bash
+    mkdir -p $HOME/software
+    cd $HOME/software
+    ```
+
+2. Download cellranger from [10xgenomics](https://www.10xgenomics.com/support/software/cell-ranger/downloads).
+  You will need to register with 10x, and they will then provide you with a link to download a `.tar.gz` archive file.
+  You can use `wget` to download the file:
+
+    ```bash 
+    wget -O cellranger-9.0.0.tar.gz "YOUR-LINK-HERE"
+    ```
+
+1. Unpack the downloaded file:
+
+    ```bash
+    tar -xzvf cellranger-9.0.0.tar.gz
+    ```
+
+2. Add the Cellranger directory to your `$PATH`, allowing you to use the `cellranger` command from any location: 
+
+    ```bash
+    export PATH=$HOME/software/cellranger-9.0.0:$PATH
+    ```
+
+	***You may want to add this command to your `$HOME/.bashrc` for convenience.***
 
 
 ## Acknowledgments:
@@ -140,6 +176,6 @@ and the [Hemberg Group course materials](https://www.singlecellcourse.org/). Add
 
 The materials have been contributed to by many individuals over the last 2 years, including:
 
-Abigail Edwards, Ashley D Sawle, Chandra Chilamakuri, Kamal Kishore, Stephane Ballereau, Zeynep Kalendar Atak, Hugo Tavares, Jon Price, Katarzyna Kania, Roderik Kortlever, Adam Reid, Tom Smith
+Abigail Edwards, Ashley D Sawle, Chandra Chilamakuri, Kamal Kishore, Stephane Ballereau, Zeynep Kalendar Atak, Hugo Tavares, Jon Price, Katarzyna Kania, Roderik Kortlever, Adam Reid, Tom Smith, Jiawei Wang
 
 Apologies if we have missed anyone!
