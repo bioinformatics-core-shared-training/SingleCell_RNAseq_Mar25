@@ -124,10 +124,11 @@ However, if you want to run the analysis on your own computer, you can follow th
   * (Windows users only): Download and install RTools: https://cran.r-project.org/bin/windows/Rtools/
 * Download and install RStudio: https://www.rstudio.com/products/rstudio/download/#download
 * Open RStudio and run the following commands from the console:
+
     ```r
     install.packages("BiocManager")
     BiocManager::install(c("AnnotationHub", "BiocParallel", "BiocSingular", 
-                           "DropletUtils", "PCAtools", "batchelor", 
+                           "DropletUtils", "PCAtools", "batchelor", "miloR",
                            "bluster", "cluster", "clustree", "dynamicTreeCut", 
                            "edgeR", "ensembldb", "ggplot2", "igraph", 
                            "patchwork", "pheatmap", "scater", "scran", "tidyverse"))
